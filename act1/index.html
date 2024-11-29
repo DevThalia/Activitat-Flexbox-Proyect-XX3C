@@ -1,83 +1,38 @@
-<!-- 
-1. Encabezado:
--Incluye el logotipo de la empresa a la izquierda.
--Un campo de búsqueda centrado.
--Un menú de usuario (foto de perfil, nombre y un icono de
-notificaciones) alineado a la derecha.
--En pantallas pequeñas, el campo de búsqueda debe ocultarse y
-mostrarse al hacer clic en un botón.
-
-2. Navegación lateral:
--Una barra lateral fija que contiene:
--Enlaces a secciones del dashboard (Inicio, Proyectos,
-Estadísticas, Configuración).
--El enlace activo debe resaltarse con un estilo distintivo.
--En pantallas pequeñas, la barra lateral debe colapsarse en un
-icono de menú (hamburguesa) que permita mostrarla/desplegarla.
-
-3. Sección principal:
--Divídela en dos áreas:
--Progreso de tareas: Una cuadrícula con tarjetas que
-muestran el estado de diferentes tareas. Deben ser:
--4 columnas en pantallas grandes.
--2 columnas en pantallas medianas.
--1 columna en pantallas pequeñas.
--Estadísticas generales: Un bloque con 3 gráficas (pueden
-ser cuadros de colores con texto para este ejercicio)
-dispuestas horizontalmente en pantallas grandes y
-verticalmente en pantallas pequeñas.
-
-4. Feed de comunicación (barra lateral derecha):
--Una lista de mensajes o notificaciones recientes.
--Visible solo en pantallas grandes; en pantallas pequeñas, debe
-estar disponible como una sección adicional dentro del contenido
-principal.
-
-5. Pie de página:
--Incluye enlaces como "Ayuda&quot", "Términos y condiciones" y
-"Política de privacidad".
--Estos enlaces deben distribuirse en fila en pantallas grandes y en
-columna en pantallas pequeñas.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1</title>
+    <title>Dashboard Responsivo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="contenedor-principal">
+        <!-- Encabezado -->
         <header>
-            <!-- Información empresa -->
+            <!-- Logotipo -->
             <div class="logo">
                 <img src="logo.png" alt="Logo">
             </div>
+            
+            <!-- Campo de búsqueda -->
             <div class="busqueda">
                 <input type="text" placeholder="Buscar...">
             </div>
-        
+            
             <!-- Menú hamburguesa -->
             <div class="menu-hamburguesa">
                 <label for="menu-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path d="M4 6h22M4 14h22M4 22h22"/>
+                        <path d="M4 6h22M4 14h22M4 22h22" stroke="currentColor" stroke-width="2" fill="none"/>
                     </svg>
                 </label>
             </div>
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Estadísticas</a></li>
-                    <li><a href="#">Configuración</a></li>
-                </ul>
-            </nav>
+            
+            <!-- Menú de usuario -->
             <div class="menuUsuario">
                 <div class="fotoPerfil">
                     <img src="fotoPerfil.jpg" alt="Foto de perfil">
@@ -90,6 +45,18 @@ columna en pantallas pequeñas.
                 </div>
             </div>
         </header>
+        
+        <!-- Navegación lateral -->
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Estadísticas</a></li>
+                <li><a href="#">Configuración</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Sección principal -->
         <section class="seccion-principal">
             <div class="tareas">
                 <div class="tarea">
@@ -109,6 +76,7 @@ columna en pantallas pequeñas.
                     <p>Completada</p>
                 </div>
             </div>
+            
             <div class="estadisticas">
                 <div class="estadistica">
                     <h2>Estadística 1</h2>
@@ -124,6 +92,8 @@ columna en pantallas pequeñas.
                 </div>
             </div>
         </section>
+        
+        <!-- Feed de comunicación -->
         <aside class="feed">
             <div class="mensajes">
                 <ul>
@@ -134,11 +104,13 @@ columna en pantallas pequeñas.
                 </ul>
             </div>
         </aside>
+        
+        <!-- Pie de página -->
         <footer>
             <ul>
-                <li><a href="">Ayuda</a></li>
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Política de privacidad</a></li>
+                <li><a href="#">Ayuda</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Política de privacidad</a></li>
             </ul>
         </footer>
     </div>

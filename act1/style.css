@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* Contenedor principal: organiza las secciones principales */
+/* Contenedor principal */
 .contenedor-principal {
     display: flex;
     flex-direction: column;
@@ -30,9 +30,9 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000; /* Siempre encima de otros elementos */
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    transition: top 0.3s ease; /* Transición para el efecto sticky */
+    z-index: 1000;
+    width: 100%;
+    transition: top 0.3s ease;
 }
 
 /* Logotipo */
@@ -80,6 +80,10 @@ header .menuUsuario .nombreUsuario p {
 }
 
 /* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+}
+
 .menu-hamburguesa {
     display: none;
     cursor: pointer;
@@ -97,13 +101,13 @@ nav {
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -240px;
     width: 220px;
     height: 100%;
     background-color: #2c3e50;
     padding-top: 20px;
-    transition: all 0.3s ease;
-    z-index: 10;
+    transition: left 0.3s ease-in-out;
+    z-index: 100;
 }
 
 nav ul {
@@ -129,16 +133,11 @@ nav ul li a:hover {
     background-color: #34495e;
 }
 
-/* Enlace activo */
 nav ul li a.active {
     background-color: #1abc9c;
 }
 
-/* Cuando el checkbox está marcado, el menú se despliega */
-.menu-toggle {
-    display: none;
-}
-
+/* Mostrar menú cuando el checkbox está activo */
 .menu-toggle:checked + .menu-hamburguesa + nav {
     left: 0;
 }
@@ -147,7 +146,7 @@ nav ul li a.active {
 .seccion-principal {
     display: flex;
     flex-direction: row;
-    margin-left: 240px; /* Desplazamiento para pantallas grandes */
+    margin-left: 240px;
     padding: 20px;
     flex-grow: 1;
 }
@@ -184,8 +183,8 @@ nav ul li a.active {
 }
 
 /* Feed de comunicación */
-aside.feed {
-    display: none; /* Oculto por defecto en pantallas pequeñas */
+.feed {
+    display: none;
     width: 300px;
     position: fixed;
     top: 0;
@@ -223,6 +222,7 @@ footer {
 footer ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
 }
@@ -258,66 +258,50 @@ footer ul li a:hover {
         margin-left: 240px;
     }
 
-    aside.feed {
-        display: block; /* Mostrar feed de comunicación en pantallas grandes */
+    .feed {
+        display: block;
+    }
+}
+
+/* Pantallas medianas (768px - 1024px) */
+@media (max-width: 1024px) {
+    .tareas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .estadisticas {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Pantallas pequeñas (menos de 768px) */
 @media (max-width: 768px) {
-    /* Mostrar el ícono hamburguesa en pantallas pequeñas */
     .menu-hamburguesa {
         display: block;
     }
 
-    /* Cuando el menú hamburguesa está activado, el menú lateral se despliega */
-    nav {
-        position: fixed;
-        top: 0;
-        left: -240px;
-        width: 220px;
-        height: 100%;
-        transition: left 0.3s ease;
-    }
-
-    .menu-toggle:checked + .menu-hamburguesa + nav {
-        left: 0;
+    .busqueda {
+        display: none;
     }
 
     .seccion-principal {
         margin-left: 0;
     }
 
-    /* Mostrar el feed de comunicación dentro del contenido principal en pantallas pequeñas */
-    aside.feed {
-        display: block;
-        position: static;
-        width: auto;
-        margin-top: 20px;
+    nav {
+        left: -240px;
     }
 
-    header .busqueda {
-        display: none; /* Ocultar la búsqueda en pantallas pequeñas */
-    }
-
-    header .busqueda.show {
-        display: block; /* Mostrar cuando se activa */
-        width: 100%;
-    }
-
-    /* Estilo para el botón de búsqueda en móviles */
-    header .menuUsuario .notificaciones {
-        display: block;
-    }
-}
-
-/* Pantallas medianas (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
     .tareas {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-columns: 1fr;
     }
 
     .estadisticas {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+        grid-template-columns: 1fr;
+    }
+
+    footer ul {
+        flex-direction: column;
+        align-items: center;
     }
 }
